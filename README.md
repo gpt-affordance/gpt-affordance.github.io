@@ -1,6 +1,4 @@
-# ReKep: Spatio-Temporal Reasoning of Relational Keypoint Constraints for Robotic Manipulation
-
-Submitted to CoRL 2024 (Submission Number: 202)
+# UAD: Unsupervised Affordance Distillation for Generalization in Robotic Manipulation
 
 ## Website License
 Templated borrowed from <a href="https://github.com/nerfies/nerfies.github.io">NeRFies</a>  
