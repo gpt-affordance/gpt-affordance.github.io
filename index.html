@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="UAD: Unsupervised Affordance Distillation for Generalization in Robotic Manipulation">
+  <meta name="keywords" content="Affordance Prediction, Foundation Models, Robotic Manipulation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UAD</title>
+
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-fullhd">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">UAD: Unsupervised Affordance Distillation<br>for Generalization in Robotic Manipulation</h1>
+          <div class="is-size-5 publication-authors">
+            Submitted to ICRA 2025
+            <a href="./media/appendix.pdf"><h2>[Appendix]</h2></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-widescreen">
+    <div class="columns is-centered has-text-centered">
+  </div>
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns is-vcentered is-centered">
+          <img src="media/figures/teaser.jpg" class="interpolation-image" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container is-max-widescreen">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Understanding fine-grained object affordances is imperative for robots to manipulate objects in unstructured environments given open-ended task instructions. However, existing methods on visual affordance predictions often rely on manually-annotated data or conditions only on predefined set of tasks. We introduce Unsupervised Affordance Distillation (UAD), a method for distilling affordance knowledge from foundation models into a task-conditioned affordance model without any manual annotations. By leveraging the complementary strengths of large vision models and vision-language models, UAD automatically annotates a large-scale dataset with detailed <instruction, visual affordance> pairs. Training only a lightweight task-conditioned decoder atop frozen features, UAD exhibits notable generalization to in-the-wild robotic scenes as well as to various human activities despite only being trained on rendered objects in simulation. Using affordance provided by UAD as the observation space, we demonstrate an imitation learning policy that demonstrates promising generalization to unseen object instances, object categories, and even variations in task instructions after training on as few as 10 demonstrations.
+            Appendix available <a href="./appendix.pdf">here</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+  </div>
+
+</section>
+
+<section class="section">
+  <div class="container is-max-widescreen">
+
+    <div class="rows">
+
+
+    <!-- Animation. -->
+    <div class="rows is-centered ">
+      <div class="row is-full-width">
+        <h2 class="title is-3">Overview of UAD</h2>
+
+        <!-- Interpolating. -->
+        <div class="content has-text-justified">
+        <!-- <br> -->
+        </div>
+        <img src="media/figures/method.jpg" class="interpolation-image" />
+        </br>
+        </br>
+          <p class="content has-text-justified">
+            Using renderings of 3D objects, we first perform multi-view fusion of DINOv2 features and clustering to obtain fine-grained semantic regions of objects,
+            which are then fed to VLM for proposing relevant tasks and corresponding regions <b>(a)</b>.
+            The extracted affordance is then distilled by training a language-conditioning FiLM atop frozen DINOv2 features <b>(b)</b>.
+            The learned task-conditioned affordance model provides in-the-wild prediction for diverse fine-grained regions, which are used as observation space for manipulation policies <b>(c)</b></b>.
+          </p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-widescreen">
+
+    <div class="rows">
+      <h2 class="title is-3">Generalization Properties for Policy Learning</h2>
+
+      <p class="content has-text-justified">Tasks in simulation and corresponding generalization settings investigated in the paper.</p>
+      
+      <h4 class="title is-4">Pouring: hold liquid container and pour into bowl</h4>
+
+      <div class="columns">
+        <!-- Left column for the single video -->
+        <div class="column has-text-centered left-column">
+          <video id="dist1" controls width="72%">
+            <source src="media/videos/pour/pour_train.mp4" type="video/mp4">
+          </video>
+          <p>Training Scenario</p>
+        </div>
+      
+        <!-- Right column for the 2x2 grid of videos -->
+        <div class="column right-column">
+          <div class="columns">
+            <div class="column has-text-centered">
+              <video id="dist1" controls width="80%">
+                <source src="media/videos/pour/pour_pose.mp4" type="video/mp4">
+              </video>
+              <p>Unseen Pose</p>
+            </div>
+            <div class="column has-text-centered">
+              <video id="dist1" controls width="80%">
+                <source src="media/videos/pour/pour_instance.mp4" type="video/mp4">
+              </video>
+              <p>Unseen Instance <br> (beer bottle & bowl)</p>
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column has-text-centered">
+              <video id="dist1" controls width="80%">
+                <source src="media/videos/pour/pour_category.mp4" type="video/mp4">
+              </video>
+              <p>Unseen Category <br> (beer bottle → coke can)</p>
+            </div>
+            <div class="column has-text-centered">
+              <video id="dist1" controls width="80%">
+                <source src="media/videos/pour/pour_instruction.mp4" type="video/mp4">
+              </video>
+              <p>Unseen Instruction <br> (pour beer → water plant)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+      <h4 class="title is-4">Opening: grasp and pull open revolute cabinet door</h4>
+
+
+      <div class="columns">
+        <!-- Left column for the single video -->
+        <div class="column has-text-centered left-column-25">
+          <video id="dist1" controls width="99%">
+            <source src="media/videos/open/open_train.mp4" type="video/mp4">
+          </video>
+          <p>Training Scenario</p>
+        </div>
+      
+        <!-- Right columns containing all three videos in one row -->
+        <div class="column right-column-75">
+          <div class="columns">
+            <div class="column has-text-centered">
+              <video id="dist1" controls width="99%">
+                <source src="media/videos/open/open_pose.mp4" type="video/mp4">
+              </video>
+              <p>Unseen Pose</p>
+            </div>
+            <div class="column has-text-centered">
+              <video id="dist1" controls width="99%">
+                <source src="media/videos/open/open_instance.mp4" type="video/mp4">
+              </video>
+              <p>Unseen Instance</p>
+            </div>
+            <div class="column has-text-centered">
+              <video id="dist1" controls width="99%">
+                <source src="media/videos/open/open_category.mp4" type="video/mp4">
+              </video>
+              <p>Unseen Category <br> (cabinet → fridge)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+
+      <h4 class="title is-4">Insertion: pick pen and insert into pen holder</h4>
+
+  <div class="columns">
+    <!-- Left column for the single video -->
+    <div class="column has-text-centered left-column">
+        <video id="dist1" controls width="72%">
+            <source src="media/videos/insert/insert_train.mp4" type="video/mp4">
+        </video>
+        <p>Training Scenario</p>
+    </div>
+  
+    <!-- Right column for the 2x2 grid of videos -->
+    <div class="column right-column">
+        <div class="columns">
+            <div class="column has-text-centered">
+                <video id="dist1" controls width="80%">
+                    <source src="media/videos/insert/insert_pose.mp4" type="video/mp4">
+                </video>
+                <p>Unseen Pose</p>
+            </div>
+            <div class="column has-text-centered">
+                <video id="dist1" controls width="80%">
+                    <source src="media/videos/insert/insert_instance.mp4" type="video/mp4">
+                </video>
+                <p>Unseen Instance (marker)</p>
+            </div>
+        </div>
+        <div class="columns">
+            <div class="column has-text-centered">
+                <video id="dist1" controls width="80%">
+                    <source src="media/videos/insert/insert_category.mp4" type="video/mp4">
+                </video>
+                <p>Unseen Category <br> (pen holder → cup)</p>
+            </div>
+            <div class="column has-text-centered">
+                <video id="dist1" controls width="80%">
+                    <source src="media/videos/insert/insert_instruction.mp4" type="video/mp4">
+                </video>
+                <p>Unseen Instruction <br> (insert pen → insert carrot)</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</section>
+
+<section class="section">
+  <div class="container is-max-widescreen">
+
+    <div class="rows">
+      <h2 class="title is-3">Real-World Robot Execution</h2>
+      <p class="content has-text-justified">Videos are played at 2x speed.</p>
+
+      <div class="columns">
+        <div class="column has-text-centered">
+          <video id="dist1"
+            controls
+            width="99%">
+            <source src="media/videos/real-speedup/pour-comp.mp4"
+            type="video/mp4">
+          </video>
+          <p>Watering Plant.</p>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column has-text-centered">
+          <video id="dist1"
+            controls
+            width="99%">
+            <source src="media/videos/real-speedup/open-comp.mp4"
+            type="video/mp4">
+          </video>
+          <p>Opening Drawer.</p>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column has-text-centered">
+          <video id="dist1"
+            controls
+            width="99%">
+            <source src="media/videos/real-speedup/insert-comp.mp4"
+            type="video/mp4">
+          </video>
+          <p>Inserting Pen.</p>
+        </div>
+      </div>
+      
+</div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content has-text-centered">
+          <p>
+            Website template borrowed from <a href="https://github.com/nerfies/nerfies.github.io">NeRFies</a>. 
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>
