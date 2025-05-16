@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Bulma-carousel sanity check</title>
+
+  <!-- Bulma core -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
+  <!-- Bulma-carousel CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css">
+
+  <style>
+  /* ---------- JUST THE NECESSARY CSS ---------- */
+  #results-carousel           { max-width: 100%; overflow: hidden; }
+  #results-carousel .item,
+  #results-carousel .carousel-item {
+      position: relative;
+      flex: 0 0 33.333%;          /* 3 visible per view            */
+      padding: .4em;
+  }
+  #results-carousel .item::before,
+  #results-carousel .carousel-item::before {
+      content: '';
+      display: block;
+      padding-top: 56.25%;        /* 16 : 9 aspect box              */
+  }
+  #results-carousel .item video,
+  #results-carousel .carousel-item video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+  }
+  </style>
+</head>
+<body>
+
+<section class="hero is-light">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <!-- three identical clips are enough for a test -->
+        <div class="item">
+          <video autoplay muted loop preload="metadata">
+            <source src="media/videos/teaser_placeholder.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video autoplay muted loop preload="metadata">
+            <source src="media/videos/teaser_placeholder.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video autoplay muted loop preload="metadata">
+            <source src="media/videos/teaser_placeholder.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div><!-- /.container -->
+  </div><!-- /.hero-body -->
+</section>
+
+<!-- Bulma-carousel JS -->
+<script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/js/bulma-carousel.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* 1 — attach once, keep the instance                              */
+  const carousel = bulmaCarousel.attach('#results-carousel', {
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    loop: true,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    navigation: true,
+    pagination: true,
+  })[0];
+
+  /* 2 — as soon as ANY <video> has metadata, drop “is-loading”      */
+  const firstVid = document.querySelector('#results-carousel video');
+  firstVid.addEventListener('loadedmetadata', () => {
+      carousel.element.classList.remove('is-loading');
+      carousel.refresh();
+  });
+
+});
+</script>
+</body>
+</html>

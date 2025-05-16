@@ -28,7 +28,7 @@
   <script src="./static/js/index.js"></script>
 </head>
 
-<section class="hero">
+<!-- <section class="hero">
   <div class="hero-body">
     <div class="container is-fullhd">
       <div class="columns is-centered">
@@ -42,20 +42,132 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
-<section class="hero teaser">
-  <div class="container is-max-widescreen">
-    <div class="columns is-centered has-text-centered">
-  </div>
-    <div class="hero-body">
-      <div class="container">
-        <div class="columns is-vcentered is-centered">
-          <img src="media/figures/teaser.jpg" class="interpolation-image" />
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-fullhd">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">UAD: Unsupervised Affordance Distillation<br>for Generalization in Robotic Manipulation</h1>
+          <h3 class="title is-4 conference-authors"><a target="_blank" href="https://www.corl2023.org/">ICRA 2025</a></h3>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a target="_blank" href="https://tangyihe.com/">Yihe Tang</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a target="_blank" href="https://wenlong.page/">Wenlong Huang</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a target="_blank" href="https://www.wykac.com/">Yingke Wang</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a target="_blank" href="https://www.chengshuli.me/">Chengshu Li</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a target="_blank" href="https://www.linkedin.com/in/ryuan19">Roy Yuan</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a target="_blank" href="https://ai.stanford.edu/~zharu/">Ruohan Zhang</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a target="_blank" href="https://jiajunwu.com/">Jiajun Wu</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a target="_blank" href="https://profiles.stanford.edu/fei-fei-li">Li Fei-Fei</a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Stanford University</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a target="_blank" href="voxposer.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+
+            <!-- Arxiv Link. -->
+            <span class="link-block">
+              <a target="_blank" href="https://arxiv.org/abs/2307.05973"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                    <i class="fas fa-file"></i>
+                </span>
+                <span>ArXiv</span>
+              </a>
+            </span>
+
+            <!-- Video Link. -->
+            <!-- <span class="link-block">
+              <a target="_blank" href="https://youtu.be/Yvn4eR05A3M"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                    <i class="fab fa-youtube"></i>
+                </span>
+                <span>Video</span>
+              </a>
+            </span> -->
+
+            <!-- Code Link. -->
+            <span class="link-block">
+              <a target="_blank" href="https://github.com/huangwl18/VoxPoser"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                    <i class="fab fa-github"></i>
+                </span>
+                <span>Code</span>
+                </a>
+            </span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
+</section>
+
+<section class="hero teaser">
+  <!-- <div class="container is-max-widescreen">
+    <div class="columns is-centered has-text-centered">
+      <div class="hero-body">
+        <div class="container">
+          <div class="columns is-vcentered is-centered">
+          <img src="media/figures/teaser.jpg" class="interpolation-image" />
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <div class="container is-max-widescreen">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns is-vcentered  is-centered">
+          <video id="teaser" autoplay muted loop controls height="80%" width="80%">
+            <source src="media/videos/teaser_placeholder.mp4"
+                    type="video/mp4">
+          </video>
+          </br>
+        </div>
+        <br>
+        <h2 class="subtitle has-text-centered">
+        CAPTION FOR TEASER VIDEO
+        </h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
   <div class="container is-max-widescreen">
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
@@ -104,6 +216,25 @@
   </div>
 </section>
 
+<section class="section" id="affordance-demo">
+  <div class="container is-max-widescreen">
+    <h2 class="title is-3">Interactive Affordance Demo</h2>
+
+    <!-- Skeleton while the Space spins up -->
+    <div id="demo-loader" class="has-text-centered">
+      <p class="subtitle is-5">Waking the model…</p>
+    </div>
+
+    <!-- Hugging Face Space -->
+    <iframe
+      src="https://yiheyihe-unsup-affordance-model-new.hf.space"
+      style="width:100%;min-height:480px;border:none"
+      loading="lazy"
+      onload="document.getElementById('demo-loader').remove();">
+    </iframe>
+  </div>
+</section>
+
 
 <section class="section">
   <div class="container is-max-widescreen">
@@ -111,53 +242,68 @@
     <div class="rows">
       <h2 class="title is-3">Generalization Properties for Policy Learning</h2>
 
-      <p class="content has-text-justified">Tasks in simulation and corresponding generalization settings investigated in the paper.</p>
-      
-      <h4 class="title is-4">Pouring: hold liquid container and pour into bowl</h4>
+      <p class="content has-text-justified"> Using affordance as a task-conditioned visual representation, policies learned from as few as 10 demonstrations generalize to <b>novel poses</b>, <b>instances</b>, <b>categories</b>, and even to <b>novel instructions</b>, all in a zero-shot manner. Here we show examples of the generalization settings for three tasks in simulation: <b>pour</b>, <b>open</b>, and <b>insertion</b>.</p>
 
-      <div class="columns">
-        <!-- Left column for the single video -->
-        <div class="column has-text-centered left-column">
-          <video id="dist1" controls width="72%">
-            <source src="media/videos/pour/pour_train.mp4" type="video/mp4">
-          </video>
-          <p>Training Scenario</p>
-        </div>
-      
-        <!-- Right column for the 2x2 grid of videos -->
-        <div class="column right-column">
-          <div class="columns">
-            <div class="column has-text-centered">
-              <video id="dist1" controls width="80%">
-                <source src="media/videos/pour/pour_pose.mp4" type="video/mp4">
-              </video>
-              <p>Unseen Pose</p>
-            </div>
-            <div class="column has-text-centered">
-              <video id="dist1" controls width="80%">
-                <source src="media/videos/pour/pour_instance.mp4" type="video/mp4">
-              </video>
-              <p>Unseen Instance <br> (beer bottle & bowl)</p>
-            </div>
+      <div class="field">
+        <!-- <label class="label">Select task to display</label> -->
+        <div class="control">
+          <div>           <!-- Bulma wrapper -->
+            <select id="task-selector">  <!-- plain select, no class -->
+              <option value="pour">Pouring</option>
+              <option value="open">Opening</option>
+              <option value="insert">Insertion</option>
+            </select>
           </div>
-          <div class="columns">
-            <div class="column has-text-centered">
-              <video id="dist1" controls width="80%">
-                <source src="media/videos/pour/pour_category.mp4" type="video/mp4">
-              </video>
-              <p>Unseen Category <br> (beer bottle → coke can)</p>
+        </div>
+      </div>
+      
+      <div class="task-block" id="task-pour">
+        <h4 class="title is-4">Pouring: hold liquid container and pour into bowl</h4>
+
+        <div class="columns">
+          <!-- Left column for the single video -->
+          <div class="column has-text-centered left-column">
+            <video id="dist1" controls width="72%">
+              <source src="media/videos/pour/pour_train.mp4" type="video/mp4">
+            </video>
+            <p>Training Scenario</p>
+          </div>
+        
+          <!-- Right column for the 2x2 grid of videos -->
+          <div class="column right-column">
+            <div class="columns">
+              <div class="column has-text-centered">
+                <video id="dist1" controls width="80%">
+                  <source src="media/videos/pour/pour_pose.mp4" type="video/mp4">
+                </video>
+                <p>Unseen Pose</p>
+              </div>
+              <div class="column has-text-centered">
+                <video id="dist1" controls width="80%">
+                  <source src="media/videos/pour/pour_instance.mp4" type="video/mp4">
+                </video>
+                <p>Unseen Instance <br> (beer bottle & bowl)</p>
+              </div>
             </div>
-            <div class="column has-text-centered">
-              <video id="dist1" controls width="80%">
-                <source src="media/videos/pour/pour_instruction.mp4" type="video/mp4">
-              </video>
-              <p>Unseen Instruction <br> (pour beer → water plant)</p>
+            <div class="columns">
+              <div class="column has-text-centered">
+                <video id="dist1" controls width="80%">
+                  <source src="media/videos/pour/pour_category.mp4" type="video/mp4">
+                </video>
+                <p>Unseen Category <br> (beer bottle → coke can)</p>
+              </div>
+              <div class="column has-text-centered">
+                <video id="dist1" controls width="80%">
+                  <source src="media/videos/pour/pour_instruction.mp4" type="video/mp4">
+                </video>
+                <p>Unseen Instruction <br> (pour beer → water plant)</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
       
-
+      <div class="task-block" id="task-open">
       <h4 class="title is-4">Opening: grasp and pull open revolute cabinet door</h4>
 
 
@@ -194,53 +340,54 @@
           </div>
         </div>
       </div>
+      </div>
       
-      
-
+    
+    <div class="task-block" id="task-insert">
       <h4 class="title is-4">Insertion: pick pen and insert into pen holder</h4>
 
-  <div class="columns">
-    <!-- Left column for the single video -->
-    <div class="column has-text-centered left-column">
-        <video id="dist1" controls width="72%">
-            <source src="media/videos/insert/insert_train.mp4" type="video/mp4">
-        </video>
-        <p>Training Scenario</p>
-    </div>
-  
-    <!-- Right column for the 2x2 grid of videos -->
-    <div class="column right-column">
-        <div class="columns">
-            <div class="column has-text-centered">
-                <video id="dist1" controls width="80%">
-                    <source src="media/videos/insert/insert_pose.mp4" type="video/mp4">
-                </video>
-                <p>Unseen Pose</p>
+      <div class="columns">
+        <!-- Left column for the single video -->
+        <div class="column has-text-centered left-column">
+            <video id="dist1" controls width="72%">
+                <source src="media/videos/insert/insert_train.mp4" type="video/mp4">
+            </video>
+            <p>Training Scenario</p>
+        </div>
+      
+        <!-- Right column for the 2x2 grid of videos -->
+        <div class="column right-column">
+            <div class="columns">
+                <div class="column has-text-centered">
+                    <video id="dist1" controls width="80%">
+                        <source src="media/videos/insert/insert_pose.mp4" type="video/mp4">
+                    </video>
+                    <p>Unseen Pose</p>
+                </div>
+                <div class="column has-text-centered">
+                    <video id="dist1" controls width="80%">
+                        <source src="media/videos/insert/insert_instance.mp4" type="video/mp4">
+                    </video>
+                    <p>Unseen Instance (marker)</p>
+                </div>
             </div>
-            <div class="column has-text-centered">
-                <video id="dist1" controls width="80%">
-                    <source src="media/videos/insert/insert_instance.mp4" type="video/mp4">
-                </video>
-                <p>Unseen Instance (marker)</p>
+            <div class="columns">
+                <div class="column has-text-centered">
+                    <video id="dist1" controls width="80%">
+                        <source src="media/videos/insert/insert_category.mp4" type="video/mp4">
+                    </video>
+                    <p>Unseen Category <br> (pen holder → cup)</p>
+                </div>
+                <div class="column has-text-centered">
+                    <video id="dist1" controls width="80%">
+                        <source src="media/videos/insert/insert_instruction.mp4" type="video/mp4">
+                    </video>
+                    <p>Unseen Instruction <br> (insert pen → insert carrot)</p>
+                </div>
             </div>
         </div>
-        <div class="columns">
-            <div class="column has-text-centered">
-                <video id="dist1" controls width="80%">
-                    <source src="media/videos/insert/insert_category.mp4" type="video/mp4">
-                </video>
-                <p>Unseen Category <br> (pen holder → cup)</p>
-            </div>
-            <div class="column has-text-centered">
-                <video id="dist1" controls width="80%">
-                    <source src="media/videos/insert/insert_instruction.mp4" type="video/mp4">
-                </video>
-                <p>Unseen Instruction <br> (insert pen → insert carrot)</p>
-            </div>
-        </div>
+      </div>
     </div>
-</div>
-
 
 
 
@@ -251,41 +398,55 @@
 
     <div class="rows">
       <h2 class="title is-3">Real-World Robot Execution</h2>
-      <p class="content has-text-justified">Videos are played at 2x speed.</p>
+      <p class="content has-text-justified">. Videos are played at 2x speed.</p>
 
-      <div class="columns">
-        <div class="column has-text-centered">
-          <video id="dist1"
-            controls
-            width="99%">
-            <source src="media/videos/real-speedup/pour-comp.mp4"
-            type="video/mp4">
-          </video>
-          <p>Watering Plant.</p>
+     <!-- ‣‣‣  DROPDOWN #2  ‣‣‣ -->
+      <div class="field">
+        <!-- <label class="label">Select bottom demo</label> -->
+        <div class="control">
+          <div>
+            <select id="video-selector">
+              <option value="pour">Pouring</option>
+              <option value="open">Opening</option>
+              <option value="insert">Insertion</option>
+            </select>
+          </div>
         </div>
       </div>
 
-      <div class="columns">
-        <div class="column has-text-centered">
-          <video id="dist1"
-            controls
-            width="99%">
-            <source src="media/videos/real-speedup/open-comp.mp4"
-            type="video/mp4">
-          </video>
-          <p>Opening Drawer.</p>
+      <!-- Pouring row -->
+      <div class="video-block" id="bottom-pour">
+        <div class="columns">
+          <div class="column has-text-centered">
+            <video controls width="99%">
+              <source src="media/videos/real-speedup/pour-comp.mp4" type="video/mp4">
+            </video>
+            <p>Watering Plant.</p>
+          </div>
         </div>
       </div>
 
-      <div class="columns">
-        <div class="column has-text-centered">
-          <video id="dist1"
-            controls
-            width="99%">
-            <source src="media/videos/real-speedup/insert-comp.mp4"
-            type="video/mp4">
-          </video>
-          <p>Inserting Pen.</p>
+      <!-- Opening row -->
+      <div class="video-block" id="bottom-open">
+        <div class="columns">
+          <div class="column has-text-centered">
+            <video controls width="99%">
+              <source src="media/videos/real-speedup/open-comp.mp4" type="video/mp4">
+            </video>
+            <p>Opening Drawer.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Insertion row -->
+      <div class="video-block" id="bottom-insert">
+        <div class="columns">
+          <div class="column has-text-centered">
+            <video controls width="99%">
+              <source src="media/videos/real-speedup/insert-comp.mp4" type="video/mp4">
+            </video>
+            <p>Inserting Pen.</p>
+          </div>
         </div>
       </div>
       
@@ -307,6 +468,51 @@
   </div>
 </footer>
 
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+  
+    const selector = document.getElementById('task-selector');
+    const blocks   = document.querySelectorAll('.task-block');
+  
+    function showTask(name) {
+      blocks.forEach(b => {
+        /* Add/remove the is-active class */
+        b.classList.toggle('is-active', b.id === 'task-' + name);
+      });
+    }
+  
+    /* 1)  show default ("pour") on first load */
+    showTask(selector.value);
+  
+    /* 2)  update every time the user picks a new option */
+    selector.addEventListener('change', () => showTask(selector.value));
+  
+  });
+  </script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+  
+    /* ------------- TOP task selector (already working) ------------- */
+    const taskSel = document.getElementById('task-selector');
+    const tasks   = document.querySelectorAll('.task-block');
+    const showTask = name =>
+      tasks.forEach(b => b.classList.toggle('is-active', b.id === 'task-' + name));
+  
+    showTask(taskSel.value);
+    taskSel.addEventListener('change', () => showTask(taskSel.value));
+  
+    /* ------------- BOTTOM video selector --------------------------- */
+    const vidSel  = document.getElementById('video-selector');
+    const vids    = document.querySelectorAll('.video-block');
+    const showVid = name =>
+      vids.forEach(v => v.classList.toggle('show', v.id === 'bottom-' + name));
+  
+    showVid(vidSel.value);                      // default
+    vidSel.addEventListener('change', () => showVid(vidSel.value));
+  
+  });
+  </script>
 
 </body>
 </html>
